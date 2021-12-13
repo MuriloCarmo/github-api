@@ -20,6 +20,10 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+Route.get('/api', () => "API is running!");
+
+Route.group(() => {
+  Route.get('/repository/:id', 'RepositoriesController.listOne')
+  Route.get('/repositories', 'RepositoriesController.listAll')
+  Route.post('/saverepositories', "RepositoriesController.store");
+}).prefix('/api');
