@@ -12,6 +12,18 @@ export default class Repository extends BaseModel {
   public stargazers_count: number;
 
   @column()
+  public repository_created_at: string;
+
+  @column()
+  public description: string;
+
+  @column()
+  public url: string;
+
+  @column()
+  public forks: number;
+
+  @column()
   public language: string;
 
   @column.dateTime({autoCreate: true})

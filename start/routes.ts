@@ -20,7 +20,7 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/api', () => "API is running!");
+Route.get("/", () => "API is running!");
 
 Route.group(() => {
   Route.get('/repository/:id', 'RepositoriesController.listOne')

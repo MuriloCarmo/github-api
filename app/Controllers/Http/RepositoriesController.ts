@@ -4,11 +4,12 @@ import Repository from "App/Models/Repository";
 export default class RepositoriesController {
   public async store({request, response}) {
     try {
-      const dataToCreate = request.only(['name', 'stargazers_count', 'language']);
+      const dataToCreate = request.body(['name', 'stargazers_count', 'repository_created_at', 'description', 'url', 'forks', 'language']);
       await Repository.create(dataToCreate);
       response.json(dataToCreate);
     } catch (e) {
-      response.json("Erro Ao Criar curso", e);
+      response.json("Erro Ao Salvar Repositório", e);
+      console.log(e);
     }
   }
 
@@ -18,7 +19,6 @@ export default class RepositoriesController {
 
   public async listOne({params, response}) {
     try {
-      console.log("Entrou aqui");
       const result = await Repository.find(params.id);
       if (result) {
         return result;
